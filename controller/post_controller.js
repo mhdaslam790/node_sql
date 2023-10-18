@@ -9,7 +9,7 @@ function save(req, res) {
         content: req.body.content,
         imageUrl: req.body.imageUrl,
         categoryId: req.body.categoryId,
-        userId: 1
+        userId: req.userData.userId
     };
     const schema = {
         title: { type: "string", optional: false, max: "100", min: "5" },

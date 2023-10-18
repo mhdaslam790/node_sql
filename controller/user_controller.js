@@ -66,17 +66,18 @@ function login(req, res) {
             else {
                 bcryptjs.compare(req.body.password, user.password, function (err, result) {
                     if (result) {
+                        console.log(process.env.JWT_KEY);
                         const token = jwt.sign({
                             email: user.email,
                             userId: user.id,
-
-                        },process.env.JWT_KEY, function (error, token) {
-                            res.status(200).json({
-                                status: 200,
-                                message: "Auth successfully",
-                                token: token,
-                            });
-                        }
+                        },
+                            process.env.JWT_KEY, function (error, token) {
+                                res.status(200).json({
+                                    status: 200,
+                                    message: "Auth successfully",
+                                    token: token,
+                                });
+                            }
                         );
                     }
                     else {
@@ -106,8 +107,6 @@ function validateEmailAndPassowrd(user) {
     };
     const check = v.compile(emailSchema);
     return check(user);
-
-
 
 }
 module.exports = { signUp: signUp, login: login };

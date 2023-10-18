@@ -4,7 +4,6 @@ const userRoute = require('./routes/user.js');
 const imageRoute = require('./routes/image.js');
 const bodyParser = require ('body-parser');
 
-
 const app = express();
 
 app.use(bodyParser.json());
@@ -15,4 +14,4 @@ app.use("/images",imageRoute);
 app.get('/',(req,res)=> {
     res.send('hEllo Worllld');
 });
- module.exports= app;
+module.exports= app;
